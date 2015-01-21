@@ -35,7 +35,7 @@ program define monitor
 	_on_colon_parse `0'
     local cmd `s(after)'
     local 0 `s(before)'
-    syntax [, NOTEs(string) DEVICEs(string) SUCCESS DONE]
+    syntax [, NOTEs(string) DEVICEs(string) SUCCESS DONE VERBOSE]
 
     if ("`devices'"=="") local devices "mobile"
     if ("`done'"!="") local success success
@@ -70,6 +70,7 @@ program define monitor
 	    local fn "`r(fn)'"
 	    foreach device of local devices {
 	    	local python `"python "`r(fn)'" $pushbullet_api "${pushbullet_`device'}" "`title'" "`msg'" "'
+	    	if ("`verbose'"!="") di as input `"<`python'>"'
 	    	!`python'
 	    }
 	}
