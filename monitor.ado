@@ -45,7 +45,7 @@ program define monitor
     		exit 654
     	}
     }
-assert "`notes'"!=""
+
     * Execute command
 	cap noi `cmd'
 	local rc = _rc
