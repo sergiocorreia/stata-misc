@@ -77,6 +77,8 @@ program define monitor
 
 	* Stop if appropriate
 	if (`rc') {
+		log close _all
+		di as error "<monitor.ado> stopping execution..."
 		exit `rc'
 	}
 
