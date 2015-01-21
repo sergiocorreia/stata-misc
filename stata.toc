@@ -1,6 +1,7 @@
 v 3
 d Sergio Correia, Duke University (sergio.correia@duke.edu)
 p assert_msg ASSERT_MSG - Extended version of -assert-
+p monitor MONITOR - Use pushbullet to notify when a program is done or fails
 
 * l word-to-show path-or-url [description]
 * t: Directories within site:

@@ -1,0 +1,15 @@
+v 3
+
+d Miscellaneous Stata Commands
+d
+d Author: Sergio Correia, Duke University
+d Support: sergio.correia@duke.edu
+d
+d monitor: Use pushbullet to notify when a program is done or fails
+d
+d
+d Distribution-Date: 20141213
+d
+f monitor.ado
+f pushbullet.py.ado
+e
