@@ -11,5 +11,6 @@ d
 d Distribution-Date: 20141213
 d
 f monitor.ado
+f monitor.sthlp
 f pushbullet.py.ado
 e
