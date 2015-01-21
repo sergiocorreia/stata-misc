@@ -56,11 +56,11 @@ program define monitor
 		exit `rc'
 	}
 	else if (`rc'>1) {
-		local msg "(rc=`rc') (cmd=`cmd') `note'"
+		local msg "(rc=`rc') (cmd=`cmd') `notes'"
 		local title "Stata Error"
 	}
 	else if (`rc'==0) {
-		local msg "(cmd=`cmd') `note'"
+		local msg "(cmd=`cmd') `notes'"
 		local title "Stata Done"
 	}
 
