@@ -10,10 +10,12 @@
 * - Fails when combined with e.g. -map-, -by-, etc., which work on the code on the same line
 * - Doesn't allow additional options in [*]
 
+* Bug in handling the locals.. see quipu index and map.ado for soln
+
 capture program drop block
 program define block
 	version 12
-	
+
 	local do do
 	if trim(`"`0'"')=="" {
 		local terminator "endblock"

@@ -55,13 +55,16 @@ program define map
 		while ("`locals'"!="") {
 			gettoken key locals : locals, parse(" ")
 			gettoken value locals : locals, parse(" ")
-			local `key' `value'
+			local arg_keys `arg_keys' `key'
+			local arg_values `"`arg_values' "`value'""'
 		}
 		tempfile source tmpsource replacedsource
 		tempname fh
 		qui file open `fh' using `"`source'"', write text replace
+		if ("`arg_keys'"!="") file write `fh' `"args `arg_keys'"' _n
 		local maxlines 1024
 		forval i = 1/`maxlines' {
+			assert_msg (`i'<`maxlines'), msg("map error: maxlines (`maxlines') reached in inline block!" _n "(did you forget to close the block?)")
 			qui disp _request2(_curline)
 			local trimcurline `curline' // Remove trailing comments and surrounding spaces
 			if strpos(`"`trimcurline'"', "}}")==1 {
@@ -119,7 +122,7 @@ program define map
 		if ("`dryrun'"=="") {
 			if (`multiline') {
 				**type `"`replacedsource'"', asis
-				`do' `"`replacedsource'"'
+				`do' `"`replacedsource'"' `arg_values'
 			}
 			else {
 				`replaced_cmd'
