@@ -8,3 +8,6 @@ cap ado uninstall monitor
 net install monitor
 cap ado uninstall assert_msg
 net install assert_msg
+cap ado uninstall map
+net install map
+```
