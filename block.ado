@@ -13,7 +13,7 @@
 capture program drop block
 program define block
 	version 12
-local j bugbug
+	
 	local do do
 	if trim(`"`0'"')=="" {
 		local terminator "endblock"

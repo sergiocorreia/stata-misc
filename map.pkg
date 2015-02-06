@@ -1,0 +1,14 @@
+v 3
+
+d Miscellaneous Stata Commands
+d
+d Author: Sergio Correia, Duke University
+d Support: sergio.correia@duke.edu
+d
+d map: Inspired by Python's map(), maps allows arbitrary foreach loops as a one-liner
+d
+d Distribution-Date: 20150206
+d
+f map.ado
+f map.sthlp
+e
