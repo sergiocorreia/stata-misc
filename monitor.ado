@@ -34,6 +34,7 @@ program define monitor
 	* Parse
 	_on_colon_parse `0'
     local cmd `s(after)'
+    assert_msg "`cmd'"!="", msg("nothing after :")
     local 0 `s(before)'
     syntax [, ///
 		NOTEs(string) /// Message that will be passed to device
