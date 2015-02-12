@@ -63,7 +63,6 @@ program define monitor
 		local dofile `dofile' // Remove leading spaces
 		copy "`dofile'`ext'" "`tempdo'"
 		if ("`verbose'"!="") di as text `"(running <`dofile'`ext'> as <`tempdo'>)"'
-		local cmd 
 		cap noi `do' "`tempdo'"
     }
     else {
