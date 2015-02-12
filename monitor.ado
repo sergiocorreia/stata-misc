@@ -54,7 +54,7 @@ program define monitor
 
     * Tempcopy
     if ("`copy'"!="") {
-		gettoken do dofile : `cmd'
+		gettoken do dofile : cmd
 		assert_msg inlist("`do'", "do", "run"), msg("option -copy- only works with -do DOFILE- or -run DOFILE- commands")
 		tempfile tempdo
 		if (strpos("`file'",".do")==0) {
