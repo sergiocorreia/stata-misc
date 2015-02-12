@@ -60,6 +60,7 @@ program define monitor
 		if (strpos("`dofile'",".do")==0) {
 		    local ext ".do"
 		}
+		local dofile `dofile' // Remove leading spaces
 		copy "`dofile'`ext'" "`tempdo'"
 		if ("`verbose'"!="") di as text `"(running <`dofile'`ext'> as <`tempdo'>)"'
 		local cmd 
