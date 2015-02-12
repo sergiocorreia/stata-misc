@@ -1,7 +1,7 @@
 * MONITOR.ADO - Sends a notification in case of error
 * USAGE:
 * a) monitor install
-* b) monitor, [note(..) DEVICEs(..) SUCCESS] : cmd
+* b) monitor, [note(..) DEVICEs(..) SUCCESS COPY] : cmd
 
 program define monitor
 
@@ -35,7 +35,13 @@ program define monitor
 	_on_colon_parse `0'
     local cmd `s(after)'
     local 0 `s(before)'
-    syntax [, NOTEs(string) DEVICEs(string) SUCCESS DONE VERBOSE]
+    syntax [, ///
+		NOTEs(string) /// Message that will be passed to device
+		DEVICEs(string) /// Target device(s)
+		SUCCESS DONE /// These are synonyms; send msg both with failures and successes
+		VERBOSE /// Report details
+		COPY /// Copy file to a tempfile and run that, to avoid problems with dropbox sync
+		]
 
     if ("`devices'"=="") local devices "mobile"
     if ("`done'"!="") local success success
@@ -46,8 +52,22 @@ program define monitor
     	}
     }
 
-    * Execute command
-	cap noi `cmd'
+    * Tempcopy
+    if ("`copy'"!="") {
+		gettoken do dofile : `cmd'
+		assert_msg inlist("`do'", "do", "run"), msg("option -copy- only works with -do DOFILE- or -run DOFILE- commands")
+		tempfile tempdo
+		if (strpos("`file'",".do")==0) {
+		    local ext ".do"
+		}
+		copy "`file'`ext'" "`tempdo'"
+		if ("`verbose'"!="") di as text `"(running <`file'`ext'> as <`tempdo'>)"'
+		local cmd 
+		cap noi `do' "`tempdo'"
+    }
+    else {
+		cap noi `cmd'
+    }
 	local rc = _rc
 
 	* Deal with 3 cases
