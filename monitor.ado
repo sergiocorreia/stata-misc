@@ -72,6 +72,7 @@ program define monitor
 	local rc = _rc
 
 	* Deal with 3 cases
+	assert "`cmd'"!=""
 	if (`rc'==1) {
 		* User pressed break key, don't report that
 		exit `rc'
