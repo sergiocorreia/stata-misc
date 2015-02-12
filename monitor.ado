@@ -57,11 +57,11 @@ program define monitor
 		gettoken do dofile : cmd
 		assert_msg inlist("`do'", "do", "run"), msg("option -copy- only works with -do DOFILE- or -run DOFILE- commands")
 		tempfile tempdo
-		if (strpos("`file'",".do")==0) {
+		if (strpos("`dofile'",".do")==0) {
 		    local ext ".do"
 		}
-		copy "`file'`ext'" "`tempdo'"
-		if ("`verbose'"!="") di as text `"(running <`file'`ext'> as <`tempdo'>)"'
+		copy "`dofile'`ext'" "`tempdo'"
+		if ("`verbose'"!="") di as text `"(running <`dofile'`ext'> as <`tempdo'>)"'
 		local cmd 
 		cap noi `do' "`tempdo'"
     }
