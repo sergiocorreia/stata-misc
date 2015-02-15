@@ -57,20 +57,20 @@ If the command is longer than one line, use the advanced syntax:
 {opt locals(key1 ["]val1["] ...)}
 {opt run}
 ]
-{cmd: : }{cmd:{c -(}{c -(}}
+{cmd: : }{cmd:}
 {p_end}
 {p 12 15 2}
 {it:commands}
 {p_end}
 {p 8 15 2}
-{cmd:{c )-}{c )-}}
+{cmd:endmap}
 {p_end}
 
 Example:
-{p 8 15 2}{cmd:map (var=turn foreign): {c -(}{c -(}}{p_end}
+{p 8 15 2}{cmd:map (var=turn foreign):}{p_end}
 {p 12 15 2}{cmd:tab @var}{p_end}
 {p 12 15 2}{cmd:su @var}{p_end}
-{p 8 15 2}{cmd:{c )-}{c )-}}{p_end}
+{p 8 15 2}{cmd:endmap}{p_end}
 
 
-Basically, we wrap the commands in {{ }} , and add the options locals() and run, in case they are needed.
+Basically, we leave the first line empty, and use -endmap- to indicate when to stop, and add the options locals() and run, in case they are needed.

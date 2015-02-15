@@ -16,7 +16,6 @@ program define map
 	local cmd `s(after)'
 	local 0 `s(before)'
 
-
 	* Parse templates, each within parenthesis
 	local num_total 1
 	_parse expand keyval rest : 0
@@ -44,7 +43,7 @@ program define map
 		if ("`run'"!="") local do run // Multiline-related
 	}
 	local verbose = ("`verbose'"!="") // Convert to 0/1
-	local multiline = strpos(trim(`"`cmd'"'), "{{")==1
+	local multiline = (`"`cmd'"'=="")
 	if (`verbose') {
 		local iterations = plural(`num_total', "iteration")
 		di as text "(map: performing `num_total' `iterations' with multiline=`multiline')" _n
@@ -67,7 +66,7 @@ program define map
 			assert_msg (`i'<`maxlines'), msg("map error: maxlines (`maxlines') reached in inline block!" _n "(did you forget to close the block?)")
 			qui disp _request2(_curline)
 			local trimcurline `curline' // Remove trailing comments and surrounding spaces
-			if strpos(`"`trimcurline'"', "}}")==1 {
+			if strpos(`"`trimcurline'"', "endmap")==1 {
 				continue, break
 			}
 			*di as error `"[`i'] <`curline'>"'
