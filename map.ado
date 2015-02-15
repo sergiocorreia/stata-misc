@@ -39,7 +39,7 @@ program define map
 	if (`"`0'"'!="") {
 		Assert strpos(ltrim(`"`0'"'), ",")==1, msg("parsing error, no comma in -map- options")
 		syntax, [Verbose] [BRACKETonly] [DRYrun] /// Dryrun is inspired on the -rename- option
-			[RUN] [locals(string asis)] // Multiline options
+			[RUN] [locals(string asis)] [MAXLINEs(integer 1024)] // Multiline options
 		if ("`run'"!="") local do run // Multiline-related
 	}
 	local verbose = ("`verbose'"!="") // Convert to 0/1
@@ -61,7 +61,6 @@ program define map
 		tempname fh
 		qui file open `fh' using `"`source'"', write text replace
 		if ("`arg_keys'"!="") file write `fh' `"args `arg_keys'"' _n
-		local maxlines 1024
 		forval i = 1/`maxlines' {
 			assert_msg (`i'<`maxlines'), msg("map error: maxlines (`maxlines') reached in inline block!" _n "(did you forget to close the block?)")
 			qui disp _request2(_curline)

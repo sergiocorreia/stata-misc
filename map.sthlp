@@ -56,6 +56,7 @@ If the command is longer than one line, use the advanced syntax:
 {it:PreviousOptions}
 {opt locals(key1 ["]val1["] ...)}
 {opt run}
+{opt maxlines(#)}
 ]
 {cmd: : }{cmd:}
 {p_end}
