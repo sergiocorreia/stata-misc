@@ -48,6 +48,8 @@ But on rare cases we want them to be mandatory, to deal with corner cases:
 
 If the command is longer than one line, use the advanced syntax:
 
+NOTE: Due to the way -for- commands parse the arguments
+
 {p 8 15 2}
 {cmd:map}
 (key=val val ...)
