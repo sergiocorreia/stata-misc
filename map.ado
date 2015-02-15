@@ -38,7 +38,7 @@ program define map
 	local do do // Multiline-related
 
 	if (`"`0'"'!="") {
-		Assert strpos(ltrim("`0'"), ",")==1, msg("parsing error, no comma in -map- options")
+		Assert strpos(ltrim(`"`0'"'), ",")==1, msg("parsing error, no comma in -map- options")
 		syntax, [Verbose] [BRACKETonly] [DRYrun] /// Dryrun is inspired on the -rename- option
 			[RUN] [locals(string asis)] // Multiline options
 		if ("`run'"!="") local do run // Multiline-related
