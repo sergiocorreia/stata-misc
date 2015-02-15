@@ -52,7 +52,7 @@ program define map
 	
 
 	if (`multiline') {
-		while ("`locals'"!="") {
+		while (`"`locals'"'!="") {
 			gettoken key locals : locals, parse(" ")
 			gettoken value locals : locals, parse(" ")
 			local arg_keys `arg_keys' `key'
