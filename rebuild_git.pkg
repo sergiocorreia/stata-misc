@@ -1,0 +1,16 @@
+v 3
+
+d Miscellaneous Stata Commands
+d
+d Author: Sergio Correia, Duke University
+d Support: sergio.correia@duke.edu
+d
+d rebuild_git: Rebuild and reinstalls a Git project
+d
+d Distribution-Date: 20150304
+d
+d (Currently only works with -reghdfe- and -quipu- on hardcoded paths)
+d
+f rebuild_git.ado
+f rebuild_git.sthlp
+e

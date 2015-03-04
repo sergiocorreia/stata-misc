@@ -10,4 +10,6 @@ cap ado uninstall assert_msg
 net install assert_msg
 cap ado uninstall map
 net install map
+cap ado uninstall rebuild_git
+net install rebuild_git
 ```

@@ -7,7 +7,6 @@
 * -bracketonly- is a workaround in case you have e.g. @y and @yes or something like that
 * NOTE: Outer loops are to the left, inner loops are to the right
 
-cap pr drop map
 program define map
 	version 12
 
