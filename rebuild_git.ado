@@ -15,7 +15,7 @@ program define rebuild_git
 	cap noi which `project'
 
 	di as text _n "{title:Uninstalling if already installed}"
-	cap ado uninstall reghdfe
+	cap ado uninstall `project'
 
 	di as text _n "{title:Installing from local git repo}"
 	qui net from "`projectpath'/package/"
