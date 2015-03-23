@@ -16,11 +16,12 @@ program define rebuild_git
 
 	di as text _n "{title:Uninstalling if already installed}"
 	cap ado uninstall `project'
+	if ("`project'"=="reghdfe") cap ado uninstall hdfe
 
 	di as text _n "{title:Installing from local git repo}"
 	qui net from "`projectpath'/package/"
 	net install `project'
-	if ("`project'"=="reghdfe") net install hdfe // Also install hdfe.ado
+	if ("`project'"=="reghdfe") net install hdfe
 
 	di as text _n "{title:New version:}"
 	cap noi which `project'
