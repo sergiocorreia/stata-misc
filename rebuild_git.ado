@@ -20,6 +20,7 @@ program define rebuild_git
 	di as text _n "{title:Installing from local git repo}"
 	qui net from "`projectpath'/package/"
 	net install `project'
+	if ("`project'"=="reghdfe") net install hdfe // Also install hdfe.ado
 
 	di as text _n "{title:New version:}"
 	cap noi which `project'
