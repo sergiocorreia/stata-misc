@@ -23,7 +23,7 @@ program define map
 		gettoken key_`i' keyval_`i' : keyval_`i', parse(" =")
 		gettoken eqsign values_`i' : keyval_`i', parse("=")
 		local num_`i' : word count `values_`i''
-		Assert `num_`i'' > 0, msg("rhs of `key_`i'' is empty")
+		Assert `num_`i'' > 0, msg("rhs of key `key_`i'' is empty")
 		local num_total = `num_total' * `num_`i''
 		local cursor_`i' 1
 		local value_`i' : word 1 of `values_`i''
