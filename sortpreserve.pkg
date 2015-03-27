@@ -1,0 +1,14 @@
+v 3
+
+d Miscellaneous Stata Commands
+d
+d Author: Sergio Correia, Duke University
+d Support: sergio.correia@duke.edu
+d
+d sortpreserve: Runs a command and then quickly restores the sort order afterwards. Useful with merge.
+d
+d Distribution-Date: 20150326
+d
+f sortpreserve.ado
+f sortpreserve.sthlp
+e

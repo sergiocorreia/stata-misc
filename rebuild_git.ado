@@ -1,6 +1,6 @@
 program define rebuild_git
 	args project
-	assert inlist("`project'", "quipu", "reghdfe")
+	assert_msg inlist("`project'", "quipu", "reghdfe"), msg("project does not exist: `project'")
 	cap cls
 	di as text "(note: rebuilding will silently fail if we cannot run .py files directly from the command line)"
 	local gitpath "D:/Github"
