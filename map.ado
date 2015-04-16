@@ -41,6 +41,10 @@ program define map
 			[RUN] [locals(string asis)] [MAXLINEs(integer 1024)] // Multiline options
 		if ("`run'"!="") local do run // Multiline-related
 	}
+	else {
+		local maxlines 1024 // Need it even w/out options
+	}
+
 	local verbose = ("`verbose'"!="") // Convert to 0/1
 	local multiline = (`"`cmd'"'=="")
 	if (`verbose') {
