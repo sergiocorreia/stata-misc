@@ -1,9 +1,9 @@
 {smcl}
-{* *! version 1.0.0  17sep2014}{...}
+{* *! version 1.0.0  18may2015}{...}
 {title:Title}
 
 {p2colset 5 18 20 2}{...}
-{p2col :{cmd:map} {hline 2}}Allow expressing multiple foreach loops as a one-liner{p_end}
+{p2col :{cmd:map_gen} {hline 2}}Specialization of map.ado for generating variables{p_end}
 {p2colreset}{...}
 
 {title:Syntax}
