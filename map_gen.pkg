@@ -1,0 +1,14 @@
+v 3
+
+d Miscellaneous Stata Commands
+d
+d Author: Sergio Correia, Duke University
+d Support: sergio.correia@duke.edu
+d
+d map_gen: map.ado specialized for -generate- constructs
+d
+d Distribution-Date: 20150518
+d
+f map_gen.ado
+f map_gen.sthlp
+e
