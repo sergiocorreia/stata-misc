@@ -79,7 +79,6 @@ transmorphic yaml_read(string scalar fn, real scalar verbose) {
 	i = 0
 	hanging = 0 // 1 if prev line had key: but no value
 	dict_val = ""
-	verbose = 1
 	while ( ( line = fget(fh) ) != J(0,0,"") ) {
 
 		//  Ignore comments
