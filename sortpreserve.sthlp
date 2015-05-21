@@ -3,7 +3,7 @@
 {title:Title}
 
 {p2colset 5 18 20 2}{...}
-{p2col :{cmd:map} {hline 2}}Runs a command and quickly restores the sort order{p_end}
+{p2col :{cmd:sortpreserve} {hline 2}}Runs a command and quickly restores the sort order{p_end}
 {p2colreset}{...}
 
 {title:Syntax}

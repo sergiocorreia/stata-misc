@@ -1,0 +1,14 @@
+v 3
+
+d Miscellaneous Stata Commands
+d
+d Author: Sergio Correia, Duke University
+d Support: sergio.correia@duke.edu
+d
+d yaml: Parse a very tiny subset of YAML
+d
+d Distribution-Date: 20150521
+d
+f yaml.ado
+f yaml.sthlp
+e

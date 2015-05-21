@@ -1,0 +1,19 @@
+# TITLE
+foo: bar
+spam: eggs
+the-ingredients:
+  a: 123
+  b: 456
+  c: 789
+# COMMENT
+  dd:
+    d:
+      x
+    e:
+      
+      y
+    f: z
+  g: 007
+epilogue: some
+epilogue2: code
+varlist: a b c d z

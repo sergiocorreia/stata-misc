@@ -6,6 +6,7 @@ p map_gen MAP_GEN - Combine -map- with -generate-
 p monitor MONITOR - Use pushbullet to notify when a program is done or fails
 p rebuild_git REBUILD_GIT - Rebuild and reinstalls git-based Stata projects
 p sortpreserve SORTPRESERVE - Runs a command and quickly restores the sort order
+p yaml YAML - Parse a very tiny subset of YAML
 
 * l word-to-show path-or-url [description]
 * t: Directories within site:
