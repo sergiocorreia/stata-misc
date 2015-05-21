@@ -16,4 +16,6 @@ cap ado uninstall rebuild_git
 net install rebuild_git
 cap ado uninstall sortpreserve
 net install sortpreserve
+cap ado uninstall yaml
+net install yaml
 ```
