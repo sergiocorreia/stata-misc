@@ -18,4 +18,6 @@ cap ado uninstall sortpreserve
 net install sortpreserve
 cap ado uninstall yaml
 net install yaml
+cap ado uninstall left_join
+net install left_join
 ```
