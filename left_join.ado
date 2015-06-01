@@ -57,7 +57,7 @@ program define Join
 					local cond "`cond')"
 				}
 
-				di `"{txt}cmd=[{res}replace `var' = `value' in `start'/`end' if `cond'{txt}]"'
+				//di `"{txt}cmd=[{res}replace `var' = `var' + `value' in `start'/`end' if `cond'{txt}]"'
 				qui replace `var' = `var' + `value' in `start'/`end' if `cond'
 			}
 		}
