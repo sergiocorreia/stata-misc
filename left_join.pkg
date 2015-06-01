@@ -1,0 +1,13 @@
+v 3
+
+d Miscellaneous Stata Commands
+d
+d Author: Sergio Correia, Duke University
+d Support: sergio.correia@duke.edu
+d
+d left_join: adhoc merge replacement (much faster for what i want)
+d
+d Distribution-Date: 20150601
+d
+f left_join.ado
+e
