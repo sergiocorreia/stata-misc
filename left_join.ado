@@ -58,7 +58,7 @@ program define Join
 				}
 
 				di `"{txt}cmd=[{res}replace `var' = `value' in `start'/`end' if `cond'{txt}]"'
-				qui replace `var' = `value' in `start'/`end' if `cond'
+				qui replace `var' = `var' + `value' in `start'/`end' if `cond'
 			}
 		}
 
