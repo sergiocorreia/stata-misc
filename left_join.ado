@@ -7,7 +7,7 @@ program define left_join
 end
 
 capture program drop Join
-program define Join
+program define Join, sortpreserve
 	di as text "(merging using dataset)"
 	syntax anything(name=pattern), panelvar(name) timevar(name) [bw_left(integer 0) bw_right(integer 0)]
 	
@@ -16,10 +16,11 @@ program define Join
 	assert_msg "`varlist'"!="", msg("empty varlist after matching patterns (`pattern')")
 	di "{txt}(patterns matched: {res}`varlist'{txt})"
 
-	local sortedby : sortedby
-	assert_msg "`sortedby'"!="", msg("dataset not sorted")
-	local first : word 1 of `sortedby'
-	assert_msg "`first'"=="`panelvar'", msg("dataset not sorted first by `panelvar' (`sortedby')")
+	sort `panelvar' `timevar' // ideally it is already sorted by panelvar and timevar
+	*local sortedby : sortedby
+	*assert_msg "`sortedby'"!="", msg("dataset not sorted")
+	*local first : word 1 of `sortedby'
+	*assert_msg "`first'"=="`panelvar'", msg("dataset not sorted first by `panelvar' (`sortedby')")
 
 	tempvar bylength
 	by `panelvar': gen long `bylength' = _N
