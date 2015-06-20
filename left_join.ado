@@ -1,9 +1,14 @@
 capture program drop left_join
 program define left_join
 	gettoken subcmd 0 : 0
-	assert inlist("`subcmd'", "prepare", "join")
+	assert inlist("`subcmd'", "prepare", "join", "clear")
 	local subcmd = proper("`subcmd'")
 	`subcmd' `0'
+end
+
+capture program drop Clear
+program define Clear
+	mata: mata drop vartypes varvalues usingvarlist
 end
 
 capture program drop Join
