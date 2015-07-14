@@ -144,10 +144,10 @@ transmorphic yaml_read(string scalar fn, real scalar verbose) {
 		if (dict_val!="") {
 			// Remove '' and "" quotes
 			_ = regexm(line, `"^"([^"]*)"$"')
-			if (_!=0) dict_val = regex(1)
+			if (_!=0) dict_val = regexs(1)
 
 			_ = regexm(line, `"^'([^']*)'$"')
-			if (_!=0) dict_val = regex(1)
+			if (_!=0) dict_val = regexs(1)
 
 			full_key = invtokens(headers[., (1..level)], ".")
 
