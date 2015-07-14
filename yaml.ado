@@ -121,6 +121,9 @@ transmorphic yaml_read(string scalar fn, real scalar verbose) {
 
 			if (_!=0) {
 				dict_val = regexs(2)
+				if (dict_val==`""""') {
+					dict_val = ""
+				}
 			}
 			else {
 				hanging = 1
