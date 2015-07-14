@@ -121,9 +121,6 @@ transmorphic yaml_read(string scalar fn, real scalar verbose) {
 
 			if (_!=0) {
 				dict_val = regexs(2)
-				if (dict_val==`""""') {
-					dict_val = ""
-				}
 			}
 			else {
 				hanging = 1
@@ -145,6 +142,13 @@ transmorphic yaml_read(string scalar fn, real scalar verbose) {
 
 		// Add value to dict
 		if (dict_val!="") {
+			// Remove '' and "" quotes
+			_ = regexm(line, `"^"([^"]*)"$"')
+			if (_!=0) dict_val = regex(1)
+
+			_ = regexm(line, `"^'([^']*)'$"')
+			if (_!=0) dict_val = regex(1)
+
 			full_key = invtokens(headers[., (1..level)], ".")
 
 			if (asarray_contains(dict, full_key)) {
