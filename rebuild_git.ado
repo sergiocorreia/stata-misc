@@ -1,9 +1,25 @@
 program define rebuild_git
-	args project
-	assert_msg inlist("`project'", "quipu", "reghdfe"), msg("project does not exist: `project'")
+	syntax anything(name=project), [GITpath(string)]
+
+	* Try to detect git path if not set; there is no "conf folder" so we will use a trick with "conf new file"
+	if ("`gitpath'"=="") {
+		local rand = int(runiform()*1e12)
+		local paths `" "D:/Github" "D:/Git" "C:/Github" "C:/Git" "'
+		foreach path of local paths {
+			cap confirm new file "`path'/`rand'"
+			assert inlist(c(rc), 0, 603) // 603=could not be opened
+			if (c(rc)==0) {
+				local gitpath "`path'"
+				continue, break
+			}
+		}
+		assert_msg "`gitpath'"!="" , msg("Could not detect Github folder, use gitpath() option")
+	}
+
+	* assert_msg inlist("`project'", "quipu", "reghdfe"), msg("project does not exist: `project'")
+
 	cap cls
 	di as text "(note: rebuilding will silently fail if we cannot run .py files directly from the command line)"
-	local gitpath "D:/Github"
 	local projectpath "`gitpath'/`project'"
 	local makefile "`projectpath'/build/build.py"
 	
