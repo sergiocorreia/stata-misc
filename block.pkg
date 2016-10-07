@@ -1,0 +1,14 @@
+v 3
+
+d Miscellaneous Stata Commands
+d
+d Author: Sergio Correia, Duke University
+d Support: sergio.correia@duke.edu
+d
+d block: Allow external code in Stata
+d
+d Distribution-Date: 20150206
+d
+f block.ado
+f blockreplace.ado
+e
