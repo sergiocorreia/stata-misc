@@ -3,12 +3,23 @@ Misc Stata commands, mostly for personal use
 ## Installation
 
 ```stata
-net from 
-
-loc packages doa
+loc packages doa mise_en_place
 
 foreach package of local packages {
 	cap ado uninstall `package'
-	net install package, from("https://raw.githubusercontent.com/sergiocorreia/stata-misc/master/")
+	net install `package', from("https://github.com/sergiocorreia/stata-misc/raw/master/")
+}
+```
+
+
+## Local Installation
+
+
+```stata
+loc packages doa mise_en_place
+
+foreach package of local packages {
+	cap ado uninstall `package'
+	net install `package', from("C:\Git\stata-misc")
 }
 ```

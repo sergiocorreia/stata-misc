@@ -40,7 +40,7 @@ program define mise_en_place
 			di as text `"  `cmd'"'
 			`cmd'
 			loc cmd `"!mklink /D "`path'\\`folder'" "`sympath'\\`folder'""'
-			*di as text `"  `cmd'"'
+			di as text `"  `cmd'"'
 			`cmd'
 		}
 	}
