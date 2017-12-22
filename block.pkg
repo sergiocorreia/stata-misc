@@ -11,4 +11,6 @@ d Distribution-Date: 20150206
 d
 f block.ado
 f blockreplace.ado
+
+f block_example.do
 e

@@ -1,0 +1,11 @@
+v 3
+
+d doa: Wrapper around -do-, with autocomplete and tempfile copy
+
+d Author: Sergio Correia
+d Distribution-Date: 20171222
+d
+f mise_en_place.ado
+f mise_en_place.sthlp
+f mise_requirements.do.ado
+e
