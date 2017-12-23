@@ -11,7 +11,7 @@ program define doa
 	
 	_assert `numfiles' != 0, msg(`"No files match the pattern "`pattern'""')
 	_assert `numfiles' == 1, msg(`"More than one file matches the pattern "`pattern'""')
-	loc dofile "`dofiles'"
+	loc dofile `dofiles'
 
 	tempfile tempdo
 	copy "`dofile'" "`tempdo'"
