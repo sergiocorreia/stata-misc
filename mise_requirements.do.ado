@@ -1,6 +1,7 @@
 *--------------------------
 * Install SSC Packages
 *--------------------------
+
 	loc packages moremata boottest ivreg2 estout egenmore binscatter
 	* texsave numdate mmat2tex sumup erepost winsor2 randomtag
 
@@ -26,7 +27,7 @@
 
 	* Install gtools
 	cap ado uninstall gtools
-	net install gtools, from("https://github.com/mcaceresb/stata-gtools/master/build/")
+	net install gtools, from("https://github.com/mcaceresb/stata-gtools/raw/master/build/")
 
 	* Install reghdfe 4.x
 	cap ado uninstall reghdfe
