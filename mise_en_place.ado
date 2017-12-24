@@ -61,11 +61,12 @@ program define mise_en_place
 	loc fn "`code_path'common.doh"
 	file open f using "`fn'", write text
 	file write f "* Common headers and settings" _n _n
-	file write f "cls" _n
 	file write f "set more off" _n
 	file write f "set niceness 5" _n
 	file write f "set segmentsize 64m" _n _n
-	file write f _n "* Globals" _n _n
+	file write f "cap log close _all" _n
+	file write f "cls" _n _n
+	file write f "* Globals" _n _n
 	file write f `"global data "../data""' _n
 	file write f `"global tmp "../tmp""' _n
 	file write f `"global log "../log""' _n
