@@ -65,6 +65,12 @@ program define mise_en_place
 	file write f "set more off" _n
 	file write f "set niceness 5" _n
 	file write f "set segmentsize 64m" _n _n
+	file write f _n "* Globals" _n _n
+	file write f `"global data "../data""' _n
+	file write f `"global tmp "../tmp""' _n
+	file write f `"global log "../log""' _n
+	file write f `"global input "../input""' _n
+	file write f `"global output "../output""' _n
 	file close f
 
 	loc fn "`code_path'master.do"
