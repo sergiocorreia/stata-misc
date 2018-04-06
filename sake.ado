@@ -19,6 +19,7 @@ program define sake
 	loc fn "$sakepath/`inputhash'.txt"
 	cap confirm file "`fn'"
 	if (c(rc)) {
+		di as error `"sake date: run=1 because file "`fn'" was not found"'
 		loc run 1
 	}
 	else {
@@ -58,7 +59,11 @@ program define CheckDate
 
 	cap confirm file "`using'"
 	if (c(rc)) {
+		di as error `"sake date: run=1 because file "`using'" was not found"'
 		c_local run 1
 		exit
 	}
+
+	hdirlist "`using'", v
+	return list
 end
