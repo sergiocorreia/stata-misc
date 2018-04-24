@@ -1,8 +1,8 @@
-Miscellaneous Stata commands
+# Miscellaneous Stata commands
 
 Production-ready commands:
 
-- `doa`: "do abbreviated". Instead of typing `do 1_import_data` you can type `doa 1` (as long as it's unambiguous)
+- `doa`: "abbreviated do". Instead of typing `do 1_import_data` you can type `doa 1` (as long as it's unambiguous)
 - `mise_en_place`: create the folder structure for a new project
 - `kosi`: Shorthand for `keep order sort isid` ([details here](kosi.md))
 - `hshell': hidden shell, so you can run shell commands on Windows without the annoying popups (requires the `parallel` package)
