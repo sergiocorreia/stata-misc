@@ -1,0 +1,18 @@
+v 3
+
+d kosi. keep, order, sort and isid in one line
+d
+d Author: Sergio Correia.
+d Support: sergio.correia@gmail.com
+d
+d KW: keep
+d KW: order
+d KW: sort
+d KW: isid
+d
+d Requires: Stata version 11.2
+d
+d Distribution-Date: 20170802
+d
+
+f kosi.ado

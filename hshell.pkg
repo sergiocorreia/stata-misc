@@ -1,0 +1,18 @@
+v 3
+
+d hshell. shell with a hidden window
+d
+d Author: Sergio Correia.
+d Support: sergio.correia@gmail.com
+d
+d KW: keep
+d KW: order
+d KW: sort
+d KW: isid
+d
+d Requires: Stata version 11.2
+d
+d Distribution-Date: 20170802
+d
+
+f hshell.ado

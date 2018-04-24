@@ -1,0 +1,9 @@
+v 3
+
+d mata_filefilter: Alternative to filefilter written in Mata
+
+d Author: Sergio Correia
+d Distribution-Date: 20180424
+d
+f mata_filefilter.ado
+e

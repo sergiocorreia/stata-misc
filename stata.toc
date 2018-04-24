@@ -3,3 +3,6 @@ d Sergio Correia
 
 p doa DOA - Wrapper around -do-
 p mise_en_place MISE_EN_PLACE - Create project layout
+p kosi KOSI - keep-order-sort-isid
+p hshell HSHELL - Hidden shell
+p mata_filefilter MATA_FILEFILTER - filefilter alternative implemented in Mata
