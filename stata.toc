@@ -1,8 +1,11 @@
 v 3
-d Sergio Correia
+d Miscellaneous Stata packages
+d
+d Author: Sergio Correia (sergio.correia@gmail.com)
+d Distribution-Date: 20181113
 
-p doa DOA - Wrapper around -do-
-p mise_en_place MISE_EN_PLACE - Create project layout
-p kosi KOSI - keep-order-sort-isid
-p hshell HSHELL - Hidden shell
+p doa DOA - Wrapper around -do- that allows abbreviations
+p mise_en_place MISE_EN_PLACE - Create standardize project layout
+p kosi KOSI - Combines keep, order, sort, and isid
+p hshell HSHELL - Alternative to -shell- that can be run hidden and without losing focus
 p mata_filefilter MATA_FILEFILTER - filefilter alternative implemented in Mata
