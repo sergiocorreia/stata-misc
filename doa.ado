@@ -93,7 +93,7 @@ program define ListDoFiles
 		loc preview_smcl `"{stata type "`dofile'", lines(5):type}"'
 		loc edit_smcl `"{stata doedit "`dofile'":edit}"'
 		loc abbrev_smcl `"{stata doa "`abbrev'":doa `abbrev'}"'
-		di as text `"`abbrev_smcl'{col 14}`dofile'{col 36} `preview_smcl'{col 42}- `edit_smcl'"'
+		di as text `"`abbrev_smcl'{col 14}`dofile'{col 49} `preview_smcl'{col 55}- `edit_smcl'"'
 	}
 
 end
