@@ -35,7 +35,7 @@ unzip -q -j master.zip '*/build/*' -d ./gtools
 # MISC STATA TOOLS (DOA, KOSI, MATA_FILEFILTER, HSHELL, etc)
 wget -O master.zip https://github.com/sergiocorreia/stata-misc/archive/master.zip
 # Only extract certain files; don't extract subdirectories
-unzip -q -j master.zip '*.pkg' '*.ado' '*.toc' '*.sthlp' -x '*/*/*' -d ./stata-misc
+unzip -q -j master.zip '*/src/*' -d ./stata-misc
 
 wget -O master.zip https://github.com/matthieugomez/sumup.ado/archive/master.zip
 unzip -q -j master.zip '*' -d ./sumup

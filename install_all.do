@@ -1,6 +1,6 @@
 
 loc packages doa mise_en_place kosi hshell mata_filefilter
-loc location "https://github.com/sergiocorreia/stata-misc/raw/master/"
+loc location "https://github.com/sergiocorreia/stata-misc/raw/master/src"
 loc location "C:\Git\stata-misc"
 
 foreach package of local packages {
