@@ -1,0 +1,16 @@
+v 3
+
+d bitfield. Create bitfield representing present by group
+d
+d Author: Sergio Correia.
+d Support: sergio.correia@gmail.com
+d
+d KW: collapse
+d
+d Requires: Stata version 11.2
+d Requires: gtools, from SSC/Github
+d
+d Distribution-Date: 20181117
+d
+
+f bitfield.ado
