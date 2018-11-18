@@ -10,7 +10,8 @@ d
 d Requires: Stata version 11.2
 d Requires: gtools, from SSC/Github
 d
-d Distribution-Date: 20181117
+d Distribution-Date: 20181118
 d
 
 f bitfield.ado
+f bitfield.sthlp

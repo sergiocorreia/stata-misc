@@ -11,8 +11,9 @@ d KW: sort
 d KW: isid
 d
 d Requires: Stata version 11.2
+d Requires: gtools, from SSC/Github
 d
-d Distribution-Date: 20170802
+d Distribution-Date: 20181118
 d
 
 f kosi.ado

@@ -1,4 +1,4 @@
-*! version 1.0.0 02aug2017
+*! version 1.0.1 18nov2018
 
 program define kosi
 	syntax anything(name=0), [Verbose NOIsily DEBug]
@@ -12,7 +12,7 @@ program define kosi
 	Run, verbose(`verbose') cmd(keep)  vars(`isid' `sort' `order' `keep')
 	Run, verbose(`verbose') cmd(order) vars(`isid' `sort' `order')
 	Run, verbose(`verbose') cmd(sort)  vars(`isid' `sort')
-	Run, verbose(`verbose') cmd(isid)  vars(`isid')
+	Run, verbose(`verbose') cmd(gisid)  vars(`isid')
 end
 
 
