@@ -21,7 +21,7 @@ net install reghdfe   , from("$path/reghdfe")
 net install ivreghdfe , from("$path/ivreghdfe")
 
 * Install miscellaneous stata packages
-loc packages doa mise_en_place kosi hshell mata_filefilter
+loc packages doa mise_en_place kosi hshell mata_filefilter bitfield
 loc location "$path/stata-misc"
 foreach package of local packages {
 	cap ado uninstall `package'
