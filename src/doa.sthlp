@@ -12,7 +12,16 @@
 {marker syntax}{...}
 {title:Syntax}
 
-{phang2}{cmd:doa} {it:{help filename}}{p_end}
+{pstd}List do-files in working directory. Includes minimal abbreviation, and links to view/edit the files:{p_end}
+
+{phang2}{cmd:doa}{p_end}
+
+{pstd}Run do-file:{p_end}
+
+{phang2}{cmd:doa} {it:{help filename}} [, {opt noc:opy}]{p_end}
+
+{pstd}Run do-file, if there are not multiple files with the same abbreviation:{p_end}
+
 {phang2}{cmd:doa} {it:abbreviation}{p_end}
 
 
@@ -26,5 +35,5 @@ Running {cmd:do} has two minor inconveniences:
 {pmore}2. If we modify the do-file while it's running, unexpected bugs will occur{p_end}
 
 {pstd}Using {cmd:doa} fixed both issues by autocompleting names and copying the
-do-files to temporary files
+do-files to temporary files (which can be disabled with the {cmd:nocopy} option)
 {p_end}

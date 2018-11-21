@@ -1,8 +1,8 @@
 cls
 pr drop _all
 clear all
-adopath + "C:\Git\stata-misc\"
-cap cd doa_test
+adopath + "C:\Git\stata-misc\src"
+cap cd doa
 dir *.do
 
 * One file exists
@@ -29,6 +29,10 @@ assert c(rc) == 601 // file ____ not found
 
 * Testing empty "doa"
 doa
+
+
+* Test the case where an exact match exists
+doa foo
 
 cd ..
 

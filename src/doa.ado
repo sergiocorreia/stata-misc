@@ -14,12 +14,19 @@ program define doa
 		exit
 	}
 
+	* Can we get an exact match?
+	cap confirm file `"`pattern'.do"'
+	if (!c(rc)) {
+		Execute, fn("`pattern'.do") `copy' `verbose'
+		exit
+	}
+
 	* List all filenames with this pattern
 	loc k = strlen(`"`pattern'"')
 	loc pattern `"`pattern'*.do"'
 	loc dofiles : dir "." files "`pattern'", respectcase
 	loc numfiles : list sizeof dofiles
-	
+
 	_assert `numfiles' != 0, msg(`"No files match the pattern "`pattern'""') rc(601)
 	*_assert `numfiles' == 1, msg(`"More than one file matches the pattern "`pattern'""')
 	if (`numfiles' > 1) {
@@ -36,18 +43,7 @@ program define doa
 	}
 	loc dofile `dofiles'
 
-	if ("`copy'" == "") {
-		tempfile tempdo
-		copy "`dofile'" "`tempdo'"
-		loc copy_text " (copy)"
-	}
-	else {
-		loc tempdo `dofile'
-	}
-
-	if ("`verbose'"!="") di as text `"Executing {stata doedit "`dofile'":`dofile'}`copy_text'"'
-	di as text "{hline 60}"
-	do "`tempdo'"
+	Execute, fn(`dofile') `copy' `verbose'
 end
 
 
@@ -61,6 +57,12 @@ program define FindShortestMatch
 		loc pattern `"`part'*.do"'
 		loc dofiles : dir "." files "`pattern'", respectcase
 		loc numfiles : list sizeof dofiles
+
+		* Look for exact match
+		if (`numfiles' > 1) & (`k' == `n') {
+			cap confirm file `"`part'.do"'
+			if (!c(rc)) loc numfiles 1
+		}
 
 		if (`numfiles' == 1) {
 			c_local abbrev "`part'"
@@ -83,7 +85,7 @@ program define ListDoFiles
 		exit
 	}
 
-	di as text `"`numfiles' do-files in the working directory:"'
+	di as text `"`numfiles' do-files in the working directory: {res}`c(pwd)'"'
 	di as text "{hline 60}"
 	loc i 0
 	loc dofiles : list sort dofiles
@@ -97,3 +99,23 @@ program define ListDoFiles
 	}
 
 end
+
+
+capture program drop Execute
+program define Execute
+	syntax, fn(string) [Verbose] [noCopy]
+
+	if ("`copy'" == "") {
+		tempfile tempdo
+		copy "`fn'" "`tempdo'"
+		loc copy_text " (copy)"
+	}
+	else {
+		loc tempdo `fn'
+	}
+
+	if ("`verbose'"!="") di as text `"Executing {stata doedit "`fn'":`fn'}`copy_text'"'
+	di as text "{hline 60}"
+	do "`tempdo'"
+end
+
