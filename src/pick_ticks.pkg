@@ -1,0 +1,10 @@
+v 3
+
+d pick_ticks: Alternative rule for selecting ticks for a plot axis
+
+d Authors: Sergio Correia, Kevin Kiernan
+d Distribution-Date: 20181120
+d
+f pick_ticks.ado
+f pick_ticks.sthlp
+e

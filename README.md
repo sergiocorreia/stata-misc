@@ -4,10 +4,11 @@ Production-ready commands:
 
 - `doa`: "abbreviated do". Instead of typing `do 1_import_data` you can type `doa 1` (as long as it's unambiguous)
 - `mise_en_place`: create the folder structure for a new project
-- `kosi`: Shorthand for `keep order sort isid` ([details here](kosi.md))
+- `kosi`: shorthand for `keep order sort isid` ([details here](kosi.md))
 - `hshell`: hidden shell, so you can run shell commands on Windows without the annoying popups (requires the `parallel` package)
 - `mata_filefilter`: alternative to filefilter implemented in Mata. Started as a workaround to an odd bug in filefilter, but might be extended further
 - `bitfield`: niche program; if you have data by i,j (for `#j` small), you sometimes want to collapse by `i` and add variables `has_j` for each level of `j`. This does so in a memory-efficient way, by compressing the dummies into ["bitfields"](https://en.wikipedia.org/wiki/Bit_field)
+- `pick_ticks`: alternative rule for selecting ticks for a plot axis
 
 Experimental commands:
 
@@ -17,7 +18,7 @@ Experimental commands:
 ## Installation
 
 ```stata
-loc packages doa mise_en_place kosi hshell mata_filefilter bitfield
+loc packages doa mise_en_place kosi hshell mata_filefilter bitfield pick_ticks
 loc location "https://github.com/sergiocorreia/stata-misc/raw/master/src"
 
 foreach package of local packages {
@@ -31,7 +32,7 @@ foreach package of local packages {
 
 
 ```stata
-loc packages doa mise_en_place kosi hshell mata_filefilter bitfield
+loc packages doa mise_en_place kosi hshell mata_filefilter bitfield pick_ticks
 loc location "C:\Git\stata-misc\src"
 
 foreach package of local packages {
