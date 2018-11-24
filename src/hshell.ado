@@ -1,4 +1,4 @@
-*! hshell.ado (hidden shell) - version 1.0 22feb2018
+*! version 1.1.0 24nov2018
 
 * USAGE: hshell, cmd(xelatex ...) v(1)
 * TODO: find out how to copy quietly without "1 file(s) copied."
@@ -43,6 +43,10 @@ program hshell
 		// To create chain commands, we could just do: (`cmd' && `cmd')
 		procexec cmd.exe /c ((`cmd') & copy NUL "`touchfile'") > "`stdout'" 2>&1
 		loc pid = r(pid)
+
+		* Cleanup
+		scalar drop PROCEXEC_HIDDEN
+		scalar drop PROCEXEC_ABOVE_NORMAL_PRIORITY
 
 		if (`verbose') di as text "(PID is `pid')"
 
