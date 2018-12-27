@@ -10,6 +10,10 @@ Production-ready commands:
 - `bitfield`: niche program; if you have data by i,j (for `#j` small), you sometimes want to collapse by `i` and add variables `has_j` for each level of `j`. This does so in a memory-efficient way, by compressing the dummies into ["bitfields"](https://en.wikipedia.org/wiki/Bit_field)
 - `pick_ticks`: alternative rule for selecting ticks for a plot axis
 
+Beta commands:
+
+- `fast_destring`: faster alternative to destring. Works well but only a few options and might change.
+
 Experimental commands:
 
 - `block`: experiment on how to use the undocumented `_request2` option
@@ -18,7 +22,7 @@ Experimental commands:
 ## Installation
 
 ```stata
-loc packages doa mise_en_place kosi hshell mata_filefilter bitfield pick_ticks
+loc packages doa mise_en_place kosi hshell mata_filefilter bitfield pick_ticks fast_destring
 loc location "https://github.com/sergiocorreia/stata-misc/raw/master/src"
 
 foreach package of local packages {
@@ -32,7 +36,7 @@ foreach package of local packages {
 
 
 ```stata
-loc packages doa mise_en_place kosi hshell mata_filefilter bitfield pick_ticks
+loc packages doa mise_en_place kosi hshell mata_filefilter bitfield pick_ticks fast_destring
 loc location "C:\Git\stata-misc\src"
 
 foreach package of local packages {

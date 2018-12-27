@@ -11,3 +11,4 @@ p hshell HSHELL - Alternative to -shell- that can be run hidden and without losi
 p mata_filefilter MATA_FILEFILTER - filefilter alternative implemented in Mata
 p bitfield BITFIELD - niche program; if you have data by i,j (for `#j` small), you sometimes want to collapse by `i` and add variables `has_j` for each level of `j`
 p pick_ticks PICK_TICKS - Alternative rule for selecting ticks for a plot axis
+p fast_destring FAST_DESTRING - Faster alternative to -destring-

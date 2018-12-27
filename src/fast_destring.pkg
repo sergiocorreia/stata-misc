@@ -1,0 +1,16 @@
+v 3
+
+d fast_destring. Faster alternative to -destring-
+d
+d Author: Sergio Correia.
+d Support: sergio.correia@gmail.com
+d
+d KW: destring
+d
+d Requires: Stata version 11.2
+d
+d Distribution-Date: 20181227
+d
+
+f fast_destring.ado
+f fast_destring.sthlp
