@@ -46,4 +46,7 @@ program define pick_ticks, rclass
 	if ("`verbose'" != "") di as error `"`low_lim'(`width')`upp_lim'"'
 
 	return local ticks `"`low_lim'(`width')`upp_lim'"'
+	return local ll `low_lim'
+	return local ul `upp_lim'
+	return local width `width'
 end
