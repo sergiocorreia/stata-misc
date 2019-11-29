@@ -4,9 +4,9 @@
 
 capture program drop pick_ticks
 program define pick_ticks, rclass
-	syntax varname(numeric) , [Verbose] [Number(integer 5)]
+	syntax varname(numeric) [if], [Verbose] [Number(integer 5)]
 
-	su `varlist', mean
+	su `varlist' `if', mean
 	loc max = r(max)
 	loc min = r(min)
 	if (`min' > 0) loc min = 0
