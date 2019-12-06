@@ -1,0 +1,10 @@
+v 3
+
+d parallel_map: Distribute tasks on multiple instances of Stata (based on -parallel-)
+
+d Author: Sergio Correia
+d Distribution-Date: 20191205
+d
+f parallel_map.ado
+f parallel_map_template.do.ado
+e

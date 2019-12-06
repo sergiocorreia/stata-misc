@@ -17,12 +17,13 @@ Beta commands:
 Experimental commands:
 
 - `block`: experiment on how to use the undocumented `_request2` option
+- `parallel_map`: (undocumented) distribute tasks on multiple instances of Stata; based on -parallel-
 
 
 ## Installation
 
 ```stata
-loc packages doa mise_en_place kosi hshell mata_filefilter bitfield pick_ticks fast_destring
+loc packages doa mise_en_place kosi hshell mata_filefilter bitfield pick_ticks fast_destring parallel_map
 loc location "https://github.com/sergiocorreia/stata-misc/raw/master/src"
 
 foreach package of local packages {
@@ -36,7 +37,7 @@ foreach package of local packages {
 
 
 ```stata
-loc packages doa mise_en_place kosi hshell mata_filefilter bitfield pick_ticks fast_destring
+loc packages doa mise_en_place kosi hshell mata_filefilter bitfield pick_ticks fast_destring parallel_map
 loc location "C:\Git\stata-misc\src"
 
 foreach package of local packages {
