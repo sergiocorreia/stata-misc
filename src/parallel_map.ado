@@ -1,13 +1,30 @@
 program define parallel_map
+	
+	* Intercept -clean- option
+	cap syntax, clean [Verbose]
+	if !c(rc) {
+		parallel_map_clean, `verbose'
+		exit
+	}
+
 	global pids // clean up
 	cap noi parallel_map_inner `0'
 	loc rc = c(rc)
-	di
 	foreach pid of global pids {
 		di as error "- closing process `pid'"
 		prockill `pid'
 	}
 	error `rc'
+end
+
+
+capture program drop parallel_map_clean
+program define parallel_map_clean
+	syntax, [verbose]
+	loc verbose = ("`verbose'" != "")
+	if ("$LAST_PARALLEL_DIR" != "") {
+		cap noi mata : unlink_folder("${LAST_PARALLEL_DIR}", `verbose')
+	}
 end
 
 
@@ -28,10 +45,14 @@ program define parallel_map_inner
 		TMP_path(string) ///
 		PRograms(string) ///
 		Verbose ///
+		CLEAN /// Clean-up entire folder at the end (else need to run parallel_map_inner, clean)
+		noLOGtable /// Show table with links to log-files
 		]
 
 	loc verbose = ("`verbose'" != "")
 	loc force = ("`force'" != "")
+	loc clean = ("`clean'" != "")
+	loc logtable = ("`logtable'" != "nologtable")
 	loc max_processes `maxprocesses'
 	if ("`method'" == "") {
 		if (c(os)=="Windows") {
@@ -55,11 +76,7 @@ program define parallel_map_inner
 	// --------------------------------------------------------------------------
 
 	* Delete last parallel instance ran
-	if ("$LAST_CALLER_ID" != "") {
-		_assert "$LAST_TMP_PATH" != ""
-		cap noi mata : unlink_folder("${LAST_TMP_PATH}`c(dirsep)'PARALLEL_${LAST_CALLER_ID}", `verbose')
-	}
-
+	parallel_map_clean
 
 	* How many cores are available in total?
 	loc total_cores : env SLURM_CPUS_ON_NODE
@@ -90,8 +107,8 @@ program define parallel_map_inner
 
 	* Caller ID
 	loc caller_id `id'
-	if (`caller_id' <= 0) loc caller_id = runiformint(1, 1e10-1)
-	loc padded_caller_id = string(`caller_id', "%010.0f")
+	if (`caller_id' <= 0) loc caller_id = runiformint(1, 1e9-1)
+	loc padded_caller_id = string(`caller_id', "%09.0f")
 	if (`verbose') di as text " - Caller ID {col 24}: {res}`padded_caller_id'"
 
 
@@ -110,6 +127,9 @@ program define parallel_map_inner
 
 	* Temporary path
 	if ("`tmp_path'" == "") loc tmp_path = c(tmpdir)
+	* Workaround for inputs that don't end with "/"
+	loc last_char = substr("`tmp_path'", strlen("`tmp_path'"), 1)
+	if (!inlist("`last_char'", "/", "\")) loc tmp_path = "`tmp_path'`c(dirsep)'"
 	if (`verbose') di as text " - Temporary folder {col 24}: {res}`tmp_path'"
 	mata: st_local("ok", strofreal(direxists("`tmp_path'")))
 	_assert `ok', msg(`"Temporary folder {res}"`tmp_path'" {txt}does not exist"')
@@ -117,19 +137,16 @@ program define parallel_map_inner
 	if (`verbose') di as text " - Parallel folder {col 24}: {res}`parallel_dir'"
 		mata : unlink_folder("`parallel_dir'", `verbose')
 
-	global LAST_TMP_PATH = "`tmp_path'"
-	global LAST_CALLER_ID = "`padded_caller_id'"
+	global LAST_PARALLEL_DIR = "`parallel_dir'"
 
 
 // --------------------------------------------------------------------------
 // Export programs
 // --------------------------------------------------------------------------
-	di as text "<<"
 	if ("`programs'" != "") {
 		tempfile prog_log prog_include
 		qui mata: parallel_export_programs("`prog_include'", "`programs'", "`prog_log'")
 	}
-	di as text ">>"
 
 // --------------------------------------------------------------------------
 // Write base files
@@ -293,17 +310,23 @@ program define parallel_map_inner
 // --------------------------------------------------------------------------
 // Output log
 // --------------------------------------------------------------------------
-	* TODO: Make it a proper table
-	di as text _n "{hline 64}"
-	foreach val of local values {
-		loc padded_worker_id = string(`val', "%08.0f")
-		loc log "`parallel_dir'/`padded_worker_id'.log"
-		conf file "`log'"
-		*ViewLog using "`log'"
-		loc color = cond(`rc`val'', "err", "txt")
-		di as text `"`padded_worker_id' |  {`color'}`rc`val''{txt} | {stata `"type "`log'""':type log} | {stata `"view "`log'""':view log}"'
+	if (`logtable') {
+		* TODO: Make it a proper table
+		di as text _n "{hline 64}"
+		foreach val of local values {
+			loc padded_worker_id = string(`val', "%08.0f")
+			loc log "`parallel_dir'/`padded_worker_id'.log"
+			conf file "`log'"
+			*ViewLog using "`log'"
+			loc color = cond(`rc`val'', "err", "txt")
+			di as text `"`padded_worker_id' |  {`color'}`rc`val''{txt} | {stata `"type "`log'""':type log} | {stata `"view "`log'""':view log}"'
+		}
+		di as text "{hline 64}" _n 
 	}
-	di as text "{hline 64}" _n 
+
+	if (`clean') {
+		cap noi mata : unlink_folder("`parallel_dir'", `verbose')
+	}
 
 
 // --------------------------------------------------------------------------

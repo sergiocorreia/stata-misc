@@ -10,5 +10,7 @@ foreach package of local packages {
 clear all
 cls
 
+parallel_map, val(1 2 4) verbose maxproc(2) force tmp("C:\Git\asd\borrar"): sysuse auto
+exit
 parallel_map, val(1 2 4) verbose maxproc(2) force: sysuse auto
 parallel_map, val(10(20)40) verbose maxproc(2) force: di "HELLO"
