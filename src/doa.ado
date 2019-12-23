@@ -1,12 +1,22 @@
+*! version 1.1.0 23dec2019
+
 * Same as -do- but with autocomplete
 
 * Current limitations:
 * - Do-files must be in the working directory
 
+* Structural limitations:
+* - Spaces in filenames are not allowed; this allows us to pass arguments
+
 capture program drop doa
 program define doa
 	syntax [anything(name=pattern)], [Verbose] [noCopy]
-	loc pattern `pattern' // remove quotes
+	
+	* Remove quotes
+	loc pattern `pattern'
+
+	* Parse arguments
+	gettoken pattern args : pattern
 
 	* Intersect empty case, and list files
 	if ("`pattern'" == "") {
@@ -17,7 +27,7 @@ program define doa
 	* Can we get an exact match?
 	cap confirm file `"`pattern'.do"'
 	if (!c(rc)) {
-		Execute, fn("`pattern'.do") `copy' `verbose'
+		Execute, fn("`pattern'.do") `copy' `verbose' args(`args')
 		exit
 	}
 
@@ -43,7 +53,7 @@ program define doa
 	}
 	loc dofile `dofiles'
 
-	Execute, fn(`dofile') `copy' `verbose'
+	Execute, fn(`dofile') `copy' `verbose' args(`args')
 end
 
 
@@ -103,7 +113,7 @@ end
 
 capture program drop Execute
 program define Execute
-	syntax, fn(string) [Verbose] [noCopy]
+	syntax, fn(string) [args(string)] [Verbose] [noCopy]
 
 	if ("`copy'" == "") {
 		tempfile tempdo
@@ -116,6 +126,6 @@ program define Execute
 
 	if ("`verbose'"!="") di as text `"Executing {stata doedit "`fn'":`fn'}`copy_text'"'
 	di as text "{hline 60}"
-	do "`tempdo'"
+	do "`tempdo'" `args'
 end
 

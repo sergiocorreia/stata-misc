@@ -26,13 +26,14 @@ doa 3a
 cap noi doa 4
 assert c(rc) == 601 // file ____ not found
 
-
 * Testing empty "doa"
 doa
 
-
 * Test the case where an exact match exists
 doa foo
+
+* Test do-files with arguments
+doa 6 1 hello
 
 cd ..
 

@@ -1,5 +1,5 @@
 {smcl}
-{* *! version 1.0.0  22dec2017}{...}
+{* *! version 1.1.0  23dec2019}{...}
 {vieweralsosee "[R] do" "help do"}{...}
 {vieweralsosee "[R] doedit" "help doedit"}{...}
 {title:Title}
@@ -18,7 +18,7 @@
 
 {pstd}Run do-file:{p_end}
 
-{phang2}{cmd:doa} {it:{help filename}} [, {opt noc:opy}]{p_end}
+{phang2}{cmd:doa} {it:{help filename}} [, {opt noc:opy}] [{opt v:erbose}] {p_end}
 
 {pstd}Run do-file, if there are not multiple files with the same abbreviation:{p_end}
 
@@ -36,4 +36,7 @@ Running {cmd:do} has two minor inconveniences:
 
 {pstd}Using {cmd:doa} fixed both issues by autocompleting names and copying the
 do-files to temporary files (which can be disabled with the {cmd:nocopy} option)
+{p_end}
+
+{pstd}Do-file arguments are allowed, but they (and the filenames) cannot contain spaces
 {p_end}
