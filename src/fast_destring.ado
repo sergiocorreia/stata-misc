@@ -1,6 +1,6 @@
-*! version 0.1.0  27dec2018
+*! version 0.2.0 16jul2019
 program define fast_destring
-	syntax varlist(string), ///
+	syntax [varlist(string default=none)], ///
 		[FLAGVARS(varlist)] ///
 		[DATEVARS(varlist) DATEFMT(string)] ///
 		REPLACE /// Mandatory; alternative is Generate(newvarlist)
@@ -38,6 +38,7 @@ program define fast_destring
 		drop `var'
 		rename `new' `var'
 	}
+	if ("`datevars'" != "") format %td `datevars'
 
 	if ("`flagvars'" != "") {
 		la def yesno 0 "No" 1 "Yes", modify
