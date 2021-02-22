@@ -93,7 +93,9 @@ program define parallel_map_inner
 		loc max_processes = max(1, int(`total_cores' / `cores_per_process'))
 	}
 
+
 	* Adjust to available cores
+	loc old_max_processes = `max_processes'
 	if (`total_cores' < `max_processes' * `cores_per_process') & (!`force') {
 		loc max_processes = max(1, int(`total_cores' / `cores_per_process'))
 	}
@@ -102,6 +104,8 @@ program define parallel_map_inner
 	if (`verbose') di as text " - Available cores     {col 24}: {res}`total_cores'"
 	if (`verbose') di as text " - Cores per process   {col 24}: {res}`cores_per_process'"
 	if (`verbose') di as text " - Number of processes {col 24}: {res}`max_processes'"
+	if (`verbose' & `old_max_processes'>`max_processes') di as text "   - Reduced from {res}`old_max_processes'{txt} processes as there are not {res}`old_max_processes'*`cores_per_process'{txt} available cores"
+	if (`verbose' & `old_max_processes'>`max_processes') di as text "   - To use more processes, use the {inp}force{txt} option, or adjust the {inp}cores(#){txt} option"
 	if (`verbose') di as text " - Method {col 24}: {res}`method'"
 
 
@@ -135,7 +139,6 @@ program define parallel_map_inner
 	_assert `ok', msg(`"Temporary folder {res}"`tmp_path'" {txt}does not exist"')
 	loc parallel_dir = "`tmp_path'PARALLEL_`padded_caller_id'"
 	if (`verbose') di as text " - Parallel folder {col 24}: {res}`parallel_dir'"
-		mata : unlink_folder("`parallel_dir'", `verbose')
 
 	global LAST_PARALLEL_DIR = "`parallel_dir'"
 
@@ -152,8 +155,8 @@ program define parallel_map_inner
 // Write base files
 // --------------------------------------------------------------------------
 
-	* Create parallel folder
-	mata: mkdir("`parallel_dir'", 1) // 1 makes it readable by everyone with access to the root folder
+	* Create parallel folder if it doesn't exist
+	cap mata: mkdir("`parallel_dir'", 1) // 1 makes it readable by everyone with access to the root folder
 
 	* Write do-file
 	qui findfile "parallel_map_template.do.ado"
@@ -358,24 +361,6 @@ end
 include "ftools_type_aliases.mata", adopath
 
 mata:
-
-`Void' unlink_folder(`String' path, `Boolean' verbose)
-{
-	`StringVector' fns
-	
-	if (!direxists(path)) exit()
-	if (verbose) printf("{txt}Removing previous folder: {res}%s{txt}\n", path)
-	
-	fns = dir(path, "files", "*", 1)
-	for (i=1; i<=rows(fns); i++) {
-		unlink(fns[i])
-	}
-	if (verbose) printf("{txt} - %f files removed\n", rows(fns))
-	
-	rmdir(path)
-	if (verbose) printf("{txt} - Folder removed\n")
-}
-
 
 `Void' filefilter(`String' source, `String' dest, `StringRowVector' from, `StringRowVector' to)
 {
