@@ -1,5 +1,5 @@
 
-loc packages doa mise_en_place kosi hshell mata_filefilter bitfield pick_ticks fast_destring parallel_map
+loc packages doa mise_en_place kosi hshell mata_filefilter bitfield pick_ticks fast_destring // parallel_map
 loc location "https://github.com/sergiocorreia/stata-misc/raw/master/src"
 
 foreach package of local packages {
